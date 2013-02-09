@@ -179,7 +179,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
 });
 
 $app->mount('/_system/', new Prontotype\Controller\SystemController());
-$app->mount('/', new Prontotype\Controller\MainController());
+$app->mount($app['prototype']['base_url'], new Prontotype\Controller\MainController());
 
 
 return $app;
