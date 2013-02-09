@@ -8,6 +8,10 @@ prototypes:
         domain: prontotype.lo
         base_path: .
     # test prototypes, disable them on public servers
+    test-prefix:
+        domain: prontotype-bar.lo
+        base_path: ./app/test/foo
+        base_url: /foo
     test-foo:
         domain: prontotype-foo.lo
         base_path: ./app/test/foo
