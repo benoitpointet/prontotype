@@ -134,7 +134,7 @@ Class Parser {
 			$item = NULL;
 			if ( $file->isFile() && strpos( $file->getFilename(), '.' ) !== 0 )
 			{
-				$item = new Page($file->getPathname(), $this->pages_path, $this->app['uri']->string(), (array)$this->app['config'] );
+				$item = new Page($file->getPathname(), $this->pages_path, $this->app['uri']->string(), (array)$this->app['config'], (array) $this->app['prototype'] );
 					
 				$this->route_map[$item->url] = $item;
 				if ( $item->id )

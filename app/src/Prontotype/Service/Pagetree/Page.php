@@ -30,11 +30,12 @@ Class Page {
 	
 	protected $name_format_regex = '/^((\d)*[\._\-])?([^\[]*)?(\[([\d\w-_]*?)\][\._\-]?)?(.*?)\.twig$/';
 	
-	function __construct( $path, $pages_root_path, $requestUri, $configProvider )
+	function __construct( $path, $pages_root_path, $requestUri, $configProvider, $prototype )
 	{
 		$this->pages_root_path = $pages_root_path;
 		$this->requestUri = $requestUri;
 		$this->configProvider = $configProvider;
+		$this->prototype = $prototype;
 		$this->build_data( $path );
 	}
 	
@@ -78,7 +79,11 @@ Class Page {
 		{
 			$this->nice_url = '/'; // homepage	
 		}
-		
+
+        if ($this->prototype['base_url'] !== '/') {
+            $this->nice_url = $this->prototype['base_url'] . $this->nice_url;
+        }
+
 		if ( ! empty( $filename_info['id'] ) )
 		{
 			$this->id = $filename_info['id'];
